@@ -1,5 +1,4 @@
 # yeast
-===
 Analyzing data from [GitHub repo](https://github.com/jurgjn/pooled-ppi-yeast). 
 
 To pull data run this line of code (approx. 30 GB). More information about Docker Image can be found [here](https://hub.docker.com/r/jurgjn/pooled-ppi-yeast/tags).
