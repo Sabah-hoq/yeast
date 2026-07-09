@@ -1,3 +1,5 @@
+__pycache__/
+*.pyc
 # Ignore the entire data directory and its contents
 data/
 
@@ -5,6 +7,8 @@ data/
 PR_ROC/final_comp.csv
 cytoscape/df_final_comparison_best.csv
 cytoscape/df_final_comparison_mean.csv
+scripts/final_comp.py
+scripts/cytoscape.py
 
 # Ignore all CSV files anywhere in the project
 *.csv
