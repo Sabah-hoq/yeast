@@ -1,0 +1,10 @@
+# Ignore the entire data directory and its contents
+data/
+
+# Ignore specific files if you want to keep other things in those folders
+PR_ROC/final_comp.csv
+cytoscape/df_final_comparison_best.csv
+cytoscape/df_final_comparison_mean.csv
+
+# Ignore all CSV files anywhere in the project
+*.csv
