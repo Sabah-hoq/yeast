@@ -15,12 +15,19 @@ After running, the raw data of the proteins is most likely stored in `prediction
 > explorer C:\yeast_data
 ```
 
-* yeast_data: A folder I made locally, replace with the folder you want the data in
+* yeast_data: A folder I made locally; replace with the folder you want the data in
 Basic analysis of data will be in: 
 
 If running into issues where the protein interface won't load after running the Dockerfile, try
 ```{shell}
 docker run -d -p 8501:8501 --name <conatiner_name> jurgjn/pooled-ppi-yeast:v26.1
 ```
-Comparing the STRING Scores with the AF3 ipTM scores is [here](https://github.com/Sabah-hoq/yeast/blob/main/graphs/graph.ipynb)
+Comparing the STRING Scores with the AF3 ipTM scores is [here](https://github.com/Sabah-hoq/yeast/blob/main/PR_ROC/graph.ipynb)
+
 Analysis of Data is [here](tbd)
+
+Obtaining files used in mapping, Cytoscape, and PR_ROC can be found in the scripts.
+* After running... will be in
+* ...
+* ...
+* ...
