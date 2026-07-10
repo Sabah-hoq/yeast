@@ -25,7 +25,7 @@ If running into issues where the protein interface won't load after running the 
 ```{shell}
 docker run -d -p 8501:8501 --name <conatiner_name> jurgjn/pooled-ppi-yeast:v26.1
 ```
-Comparing the STRING Scores with the AF3 ipTM scores is [here](https://github.com/Sabah-hoq/yeast/blob/main/PR_ROC/graph.ipynb)
+Comparing the STRING Scores with the AF3 ipTM scores is [here](https://github.com/Sabah-hoq/yeast/blob/main/notebooks/PR_ROC/graph.ipynb)
 
 #### __Getting STRING Data__
 As for right now, the `.gitignore` file doesn't track data files as they are large, but we want to make sure all of our data is stored in a data folder. 
