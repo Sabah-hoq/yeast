@@ -1,6 +1,9 @@
 # yeast
+---
+### Background 
 Analyzing data from [GitHub repo](https://github.com/jurgjn/pooled-ppi-yeast). 
 
+__Docker Data__
 To pull data, run this line of code (approx. 30 GB). More information about the Docker Image can be found [here](https://hub.docker.com/r/jurgjn/pooled-ppi-yeast/tags). This has all the data needed to perform analysis 
 
 ```
@@ -26,12 +29,19 @@ Comparing the STRING Scores with the AF3 ipTM scores is [here](https://github.co
 
 Analysis of Data is [here](tbd)
 ---
-__Data__
+__Getting STRING Data__
 As for right now, the `.gitignore` file doesn't track data files as they are large, but we want to make sure all of our data is stored in a data folder. 
 To get STRING files run this in the scripts: [download STRING files](https://github.com/Sabah-hoq/yeast/blob/main/scripts/string__downloader.py)
+
 The files used can found down below:
 [Yeast](https://string-db.org/cgi/download?sessionId=boDI8ehQpWOh&species_text=Saccharomyces+cerevisiae)
 * [protein alias](https://stringdb-downloads.org/download/protein.aliases.v12.0/4932.protein.aliases.v12.0.txt.gz)
 * [protein information](https://stringdb-downloads.org/download/protein.info.v12.0/4932.protein.info.v12.0.txt.gz)
-* [protein physical links detailed](https://stringdb-downloads.org/download/protein.links.detailed.v12.0/4932.protein.links.detailed.v12.0.txt.gz) 
+* [protein physical links detailed](https://stringdb-downloads.org/download/protein.links.detailed.v12.0/4932.protein.links.detailed.v12.0.txt.gz)
+
+
+
+The script above will automatically download the STRING files.
+
+
 
