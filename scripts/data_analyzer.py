@@ -1,7 +1,6 @@
 from load_data import load_data
 import polars as pl
 
-
 class DataAnalyzer:
     def __init__(self, data_dir="data/"):
         self.data_dir = data_dir
@@ -88,4 +87,3 @@ class DataAnalyzer:
             protein_stats,
         )
         return bias_analysis_df, protein_stats, total_unique_proteins
-
