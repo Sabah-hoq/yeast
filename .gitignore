@@ -6,7 +6,7 @@ data/
 cytoscape/df_final_comparison_best.csv
 cytoscape/df_final_comparison_mean.csv
 scripts/final_comp.py
-scripts/cytoscape.py
+scripts/cytoscape
 outputs/../*.csv
 outputs/../*.parquet
 # Ignore all CSV files anywhere in the project
