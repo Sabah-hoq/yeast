@@ -7,11 +7,10 @@ Description of Scripts
 
 `final_comp.py`: Makes the dataframe that has all ipTM and STRING scores. A csv file will be saves to `outputs\pr_roc` and a parquet file will be saved to `data`after running the line below.
     run this line: 
-    
-    ```
-    python scripts/final_comp.py --data-dir ./data 
-    ```   
 
+```{shell}    
+    python scripts/final_comp.py --data-dir ./data  
+``` 
 `figures.py`: Making the figures in the `output` folder
 
 `data_analyzer.py`:
