@@ -12,7 +12,7 @@ def download_string_data(
     """
 
     data_id : str
-        The type of dataset to download (e.g., 'protein.links.detailed', 'protein.aliases', 'protein.info')
+        The type of dataset to download (e.g., 'protein.physical.links.detailed', 'protein.aliases', 'protein.info')
     organism_id : int
         NCBI tax ID (default: 4932 for Saccharomyces cerevisiae)
     cols_to_clean : list
@@ -51,3 +51,4 @@ if __name__ == "__main__":
         cols_to_clean=["protein1", "protein2"]
     )
     print(physical_links_lf.head().collect())
+    print(len(physical_links_lf.collect()))
