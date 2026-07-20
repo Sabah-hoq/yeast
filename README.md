@@ -33,6 +33,7 @@ To get STRING files run this in the scripts: [download STRING files](https://git
 
 The files used can found down below:
 [Yeast](https://string-db.org/cgi/download?sessionId=boDI8ehQpWOh&species_text=Saccharomyces+cerevisiae)
+*Clicking on the links down below will automatically download the file*
 * [protein alias](https://stringdb-downloads.org/download/protein.aliases.v12.0/4932.protein.aliases.v12.0.txt.gz)
 * [protein information](https://stringdb-downloads.org/download/protein.info.v12.0/4932.protein.info.v12.0.txt.gz)
 * [protein physical links detailed](https://stringdb-downloads.org/download/protein.links.detailed.v12.0/4932.protein.links.detailed.v12.0.txt.gz)
