@@ -13,22 +13,16 @@ def normalize_string_id_column(lf: pl.LazyFrame) -> pl.LazyFrame:
 def load_and_map_data(data_dir_path):
     data_dir = Path(data_dir_path)
     
-    print("Scanning data sources (local files and cached web streams)...")
-    
     df2 = download_string_data(data_id="protein.physical.links.detailed", cols_to_clean=["protein1", "protein2"])
     string_aliases = download_string_data(data_id="protein.aliases")
     string_info = download_string_data(data_id="protein.info")
-    
-    print(type(string_aliases))
 
     pairs, confidences = load_data("data/")
 
-    print("Building unique protein lists and dictionary map...")
     unique_proteins = (pl.concat([
         pairs.select(pl.col("af3_id1").alias("protein_id")),
         pairs.select(pl.col("af3_id2").alias("protein_id"))
     ]).drop_nulls().unique().sort("protein_id"))
-
 
     base_map = pl.concat([
         pairs.select([
@@ -51,7 +45,6 @@ def load_and_map_data(data_dir_path):
         .with_columns(pl.col("protein_id").str.to_lowercase())
         .filter(pl.col("source").str.contains("UniProt"))
     )
-
     matched_missing = (
         need_api.join(clean_aliases, on="protein_id", how="inner")
         .select([pl.col("protein_id").alias("uniprot_id"), pl.col("string_id")])
@@ -65,16 +58,17 @@ def load_and_map_data(data_dir_path):
     df_matches_unique = full_matches.unique(subset=['uniprot_id'], keep='first').collect() 
     id_map_dict = dict(zip(df_matches_unique['uniprot_id'], df_matches_unique['string_id']))
 
-    print("Aligning interaction networks and merging scores...")
     pairs_2 = pairs.select([
         pl.col("af3_id1").alias("protein1"), pl.col("af3_id2").alias("protein2"),
         pl.col("chain_pair_iptm_best"), pl.col("chain_pair_iptm_mean")
     ]).drop_nulls().unique()
 
+    # using pairs_2 protein1 and protein2 to make a new map
     df_alphafold_mapped = pairs_2.with_columns([
-        pl.col("protein1").replace_strict(id_map_dict, default=None).alias("string_id1"),
-        pl.col("protein2").replace_strict(id_map_dict, default=None).alias("string_id2")
-    ]).drop_nulls(subset=["string_id1", "string_id2"])
+        pl.col("protein1").replace(id_map_dict, default=None).alias("string_id1"),
+        pl.col("protein2").replace(id_map_dict, default=None).alias("string_id2")
+    ])
+    print(len(df_alphafold_mapped.collect()))
 
     df_all_mapped = df_alphafold_mapped.with_columns(
         pl.min_horizontal("string_id1", "string_id2").alias("pair_key1"),
@@ -91,10 +85,7 @@ def load_and_map_data(data_dir_path):
     df_final_comparison = df_all_mapped.join(
         df_string_unique_pairs, on=["pair_key1", "pair_key2"], how="left"
     ).drop("pair_key1", "pair_key2")
-
     return df_final_comparison.collect()
-
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Global Score Pipeline Wrapper")
@@ -109,7 +100,7 @@ if __name__ == "__main__":
     data_folder = Path(args.data_dir)
     csv_path = data_folder / args.output
     final_df.write_csv(csv_path)
-    print(f"CSV file saved at: {csv_path} (Total rows: {final_df.height})")
+    print(f"CSV file saved at: {csv_path} (Total rows: {final_df.height})") #this is should be 7.5mil 
 
     repo_root = data_folder.parent
     folder_path = repo_root / "notebooks/PR_ROC"
