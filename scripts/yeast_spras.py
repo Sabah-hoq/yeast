@@ -20,7 +20,9 @@ def load_data(data_dir_path):
     )
     # Decide how ipTM will be judge as weight for spras (maybe use ipTM in confidence file)
     # Google said do iptm/ipsae
+    
     # data = data.with_columns(weight=pl.lit())
+
     # Make undirected and directed edges use combined score + iptm
     data = data.with_columns(direction=pl.lit("U"))
     return data
